@@ -23,6 +23,7 @@ class MedicoController extends Controller
     public function index()
     {
         $medicos = Medico::all();
+       // $medicos = Medico::all()->pluck('name', 'surname','especialidad').''.$this->especialidad();
 
         return view('medicos/index',['medicos'=>$medicos]);
 
@@ -54,6 +55,7 @@ class MedicoController extends Controller
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'especialidad_id' => 'required|exists:especialidads,id'
+            // en especialidad digo que la id especialidad del medico nuevo debe existir
         ]);
         $medico = new Medico($request->all());
         $medico->save();
@@ -63,7 +65,7 @@ class MedicoController extends Controller
         flash('Medico creado correctamente');
 
         return redirect()->route('medicos.index');
-    }
+    } //redireccionamos a la lista index de medico para ver que se haya creado correctamente
 
     /**
      * Display the specified resource.

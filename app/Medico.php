@@ -21,8 +21,16 @@ class Medico extends Model
         return $this->hasMany('App\Cita');
     }
 
+    /**
+     * @return string
+     */
     public function getFullNameAttribute()
     {
-        return $this->name .' '.$this->surname;
+        return $this->name . ' ' . $this->surname.$this->especialidad()->name;
     }
+
+    //modificación mia
+    //public function codigo(){
+    //  return $this->name .' '.$this->surname. ' '.$this->especialidad()->name;
+    //}
 }
