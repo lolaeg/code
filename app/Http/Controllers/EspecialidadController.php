@@ -129,11 +129,12 @@ class EspecialidadController extends Controller
         return redirect()->route('especialidades.index');
     }
 
-    public function destroyAll()
+    /*public function destroyAll()
     {
         Especialidad::truncate();
         flash('Todas las especialidades borradas correctamente');
 
         return redirect()->route('especialidades.index');
-    }
+    }*/
+
 }

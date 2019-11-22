@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!!Form::label('medico_id', 'Medico') !!}
+                           {!!Form::label('medico_id', 'Medico') !!}
                             <br>
                             {!! Form::select('medico_id', $medicos, $cita->medico_id, ['class' => 'form-control']) !!}
                         </div>

@@ -26,7 +26,7 @@ class Medico extends Model
      */
     public function getFullNameAttribute()
     {
-        return $this->name . ' ' . $this->surname.$this->especialidad()->name;
+        return $this->name . ' ' . $this->surname;
     }
 
     //modificación mia
