@@ -30,6 +30,12 @@
                             <br>
                             {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
                         </div>
+                        <div class="form-group">
+                            {!!Form::label('consulta_id', 'Consulta') !!}
+                            <br>
+                            {!! Form::select('consulta_id', $consultas, ['class' => 'form-control']) !!}
+                        </div>
+
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

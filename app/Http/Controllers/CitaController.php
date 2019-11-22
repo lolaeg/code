@@ -41,9 +41,9 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
-        $consulta =consulta::all()->pluck('name');
+        $consultas = Consulta::all()->pluck('name','id');
 
-        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'consultas'=>$consulta]);
+        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'consultas'=>$consultas]);
     }
 
     /**
@@ -58,7 +58,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'nombre_consulta' =>'required|exists:consultas,id',
+            'consulta_id' =>'required|exists:consultas,id',
 
         ]);
 
@@ -97,7 +97,7 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
-        $consultas = consulta::all()->pluck('full_name','id');
+        $consultas = Consulta::all()->pluck('name','id');
 
 
         return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'consultas'=>$consultas]);
@@ -116,7 +116,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'nombre_consulta' =>'required|exists:consultas,id'
+            'consulta_id' =>'required|exists:consultas,id'
 
         ]);
         $cita = Cita::find($id);

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consulta extends Model{
 
-    protected $fillable = ['Nombre', 'consulta_id'];
+    protected $fillable = ['id', 'name'];
 
 
     public function citas(){

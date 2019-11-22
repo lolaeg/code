@@ -22,13 +22,13 @@
                                 <tr>
                                     <td>{{ $consulta->name }}</td>
                                     <td>
-                                        {!! Form::open(['route' => ['$consulta.edit',$consulta->id], 'method' => 'get']) !!}
+                                        {!! Form::open(['route' => ['consultas.edit',$consulta->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
 
                                     </td>
                                     <td>
-                                        {!! Form::open(['route' => ['consulta.destroy',$consulta->id], 'method' => 'delete']) !!}
+                                        {!! Form::open(['route' => ['consultas.destroy',$consulta->id], 'method' => 'delete']) !!}
                                         {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                         {!! Form::close() !!}
 
