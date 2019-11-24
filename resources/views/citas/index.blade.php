@@ -19,7 +19,7 @@
                                 <th>Fecha</th>
                                 <th>Medico</th>
                                 <th>Paciente</th>
-                                <th>consulta</th>
+                                <th>Consulta</th>
 
                                 <th colspan="2">Acciones</th>
                             </tr>
@@ -31,7 +31,7 @@
                                     <td>{{ $cita->fecha_hora }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
-                                    <td>{{ $cita->consulta->full_name}}</td>
+                                    <td>{{ $cita->consulta->name}}</td>
 
                                     <td>
                                         {!! Form::open(['route' => ['citas.edit',$cita->id], 'method' => 'get']) !!}

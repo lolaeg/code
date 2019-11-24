@@ -119,6 +119,7 @@ class CitaController extends Controller
             'consulta_id' =>'required|exists:consultas,id'
 
         ]);
+
         $cita = Cita::find($id);
         $cita->fill($request->all());
 
