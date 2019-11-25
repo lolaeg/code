@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Validator::replacer('nuhsa', function ($message, $attribute, $rule, $parameters) {
-              return "NUHSA incorrecto. AN y 10 dígitos. AN1234567890";
+              return "NUHSA incorrecto. AN y 10 dígitos. Ej: AN1234567890";
 
         });
 

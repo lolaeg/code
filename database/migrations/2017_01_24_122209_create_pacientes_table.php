@@ -6,27 +6,21 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePacientesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
+        //Schema::dropIfExists('pacientes'); //CAMBIADO
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
             $table->string('nuhsa');
+            //$table->unsignedInteger('enfermedad_id'); //CAMBIADO
             $table->timestamps();
+
+            //$table->foreign('enfermedad_id')->references('id')->on('enfermedads'); //CAMBIADO
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::drop('pacientes');

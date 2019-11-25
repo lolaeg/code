@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class MedicoV2Table extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::dropIfExists('medicos');
@@ -27,11 +22,6 @@ class MedicoV2Table extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::drop('medicos');

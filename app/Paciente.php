@@ -6,18 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
-    //
     protected $fillable = ['name', 'surname', 'nuhsa'];
+    // protected $fillable = ['name', 'surname', 'nuhsa', 'enfermedad_id']; //CAMBIADO
 
-
+    /*public function enfermedad() //CAMBIADO: AÑADIDA LA FUNCION
+    {
+        return $this->belongsTo('App\Enfermedad');
+    }
+    */
     public function citas()
     {
         return $this->hasMany('App\Cita');
     }
 
-
     public function getFullNameAttribute()
     {
         return $this->name .' '.$this->surname;
+        //return $this->name .' '.$this->surname .' '.$this->enfermedad->name; // CAMBIADO
     }
 }
