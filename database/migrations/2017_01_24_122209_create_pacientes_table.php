@@ -14,10 +14,10 @@ class CreatePacientesTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('nuhsa');
-            //$table->unsignedInteger('enfermedad_id'); //CAMBIADO
+            $table->unsignedInteger('enfermedad_id'); //CAMBIADO
             $table->timestamps();
 
-            //$table->foreign('enfermedad_id')->references('id')->on('enfermedads'); //CAMBIADO
+            $table->foreign('enfermedad_id')->references('id')->on('enfermedads'); //CAMBIADO
         });
     }
 

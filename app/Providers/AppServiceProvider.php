@@ -28,10 +28,13 @@ class AppServiceProvider extends ServiceProvider
         //
         Validator::extend('nuhsa', function($field,$value,$parameters){
 
-            if (strlen($value)!=12  || substr($value,0,2)!="AN" || !is_numeric(substr($value,-10))){
+            if (strlen($value)!=12  || substr($value,0,2)!="AN" || !is_numeric(substr($value,2))){
                 return false;
             }
-            $b = (float) substr($value,2,8);
+            else{
+                return true;
+            }
+            /*$b = (float) substr($value,2,8);
             $c = (float) substr($value,10, 2);
 
 		    if ($b < 10000000) {
@@ -40,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             else {
                 $d = (float) "60" . substr($value, 2, 8);
             }
-		    return $d % 97 == $c;
+		    return $d % 97 == $c;*/
         });
 
         Validator::replacer('nuhsa', function ($message, $attribute, $rule, $parameters) {

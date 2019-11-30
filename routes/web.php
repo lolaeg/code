@@ -16,10 +16,8 @@ Route::get('/', function () {
     //SOLO LO QUE QUIERO VER UNCA INFROMACIÓN DE LOS USUARIOS
     //ESTA DEVULVE LA VISTA WELCOME
 });
-//Poner las acciones definidas por el programador antes del CRUD por defecto que monta Laravel
-//LLAMA AL METODO DESTROYALL DE ESPECIALIDADES
+
 Route::resource('especialidades', 'EspecialidadController');
-//SIGNIFICA UN CRUD DE UNA ENTIEDAD CONCRETA, MEDICOS, CITAS, ESPECIALIDADES TE LLEVE A LOS CONTROLADORES
 
 Route::resource('medicos', 'MedicoController');
 Route::resource('pacientes', 'PacienteController');
