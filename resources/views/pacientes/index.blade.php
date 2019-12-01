@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -6,27 +7,30 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Pacientes</div>
-
                     <div class="panel-body">
+                        {!! Form::open(['route' => 'pacientes.index', 'method'=>'get']) !!}
+                        <div class="form-group">
+                            {!!Form::label('especialidad_id', 'Buscar por especialidad:') !!}
+                            <br>
+                            {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
+                            {!! Form::submit('Buscar',['class'=>'btn-primary btn']) !!}
+                        </div>
+                        {!! Form::close() !!}
                         @include('flash::message')
                         {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
-
-                        <br><br>
+                        <br>
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
-                                <th>Nuhsa</th>
+                                <th>NUHSA</th>
                                 <th>Enfermedad</th>
 
                                 <th colspan="2">Acciones</th>
                             </tr>
-
                             @foreach ($pacientes as $paciente)
-
-
                                 <tr>
                                     <td>{{ $paciente->name }}</td>
                                     <td>{{ $paciente->surname }}</td>
@@ -51,4 +55,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

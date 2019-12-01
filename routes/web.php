@@ -17,6 +17,7 @@ Route::get('/', function () {
     //ESTA DEVULVE LA VISTA WELCOME
 });
 
+
 Route::resource('especialidades', 'EspecialidadController');
 
 Route::resource('medicos', 'MedicoController');

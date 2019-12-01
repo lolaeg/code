@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
+use App\Especialidad;
+use App\Medico;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -14,11 +16,13 @@ class PacienteController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $pacientes = Paciente::all();
-
-        return view('pacientes/index',['pacientes'=>$pacientes]);
+        $especialidades= Especialidad::all()->pluck('name','id');
+        //Filtro
+        $especialidad_id=$request->get('especialidad_id');
+        $pacientes = Paciente::where('especialidad_id','like',"%$especialidad_id%")->paginate(10);
+        return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades]);
     }
 
     public function create()
@@ -30,14 +34,21 @@ class PacienteController extends Controller
 
     public function store(Request $request)
     {
+        //En esta parte se añade especialidad_id a partir de enfermedad
+        $enfermedad_id=$request->get('enfermedad_id');
+        $enfermedad=Enfermedad::find($enfermedad_id);
+        $especialidad_id=$enfermedad->especialidad_id;
+        $request->merge(["especialidad_id"=>$especialidad_id]);
+        //
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'nuhsa' => 'required|nuhsa|max:255|unique:pacientes',
-            'enfermedad_id' => 'required|exists:enfermedads,id' //CAMBIADO
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+            'especialidad_id'=>'required|exists:especialidads,id'
         ]);
 
-        //TODO: crear validación propia para nuhsa
+        //TODO: crear validación propia para nuhsa (hecho)
         $paciente = new Paciente($request->all());
         $paciente->save();
 
@@ -55,20 +66,24 @@ class PacienteController extends Controller
     public function edit($id)
     {
         $paciente = Paciente::find($id);
-        $enfermedades = Enfermedad::all()->pluck('name','id'); // CAMBIADO
-
-        //return view('pacientes/edit',['paciente'=>$paciente,'enfermedades'=>$enfermedades]); //CAMBIADO
-
+        $enfermedades = Enfermedad::all()->pluck('name','id');
         return view('pacientes/edit',['paciente'=> $paciente], ['enfermedad'=>$enfermedades]);
     }
 
     public function update(Request $request, $id)
     {
+        //Esta parte es para añadir especialidad_id a partir de enfermedad
+        $enfermedad_id=$request->get('enfermedad_id');
+        $enfermedad=Enfermedad::find($enfermedad_id);
+        $especialidad_id=$enfermedad->especialidad_id;
+        $request->merge(["especialidad_id"=>$especialidad_id]);
+        //
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'nuhsa' => 'required|nuhsa|max:255',
-            'enfermedad_id' => 'required|exists:enfermedads,id' // CAMBIADO
+            'enfermedad_id' => 'required|exists:enfermedads,id',
+            'especialidad_id'=>'required|exists:especialidads,id'
         ]);
 
         $paciente = Paciente::find($id);
