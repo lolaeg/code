@@ -25,10 +25,19 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas = Cita::all();
-
-        return view('citas/index',['citas'=>$citas]);
+        $citass = Cita::all();
+        $citas= array();
+        $fecha_actual = date('Y-m-d\Th:i');
+        foreach($citass as $cita){
+            if($fecha_actual<$cita->fecha_hora){
+                array_push($citas,$cita);
+            }
+        }
+        return view('citas/index', ['citas' => $citas]);
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +68,7 @@ class CitaController extends Controller
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
             'consulta_id' =>'required|exists:consultas,id',
+            'fecha_fin' => 'date|after:now'
 
         ]);
 
@@ -79,7 +89,10 @@ class CitaController extends Controller
      */
     public function show($id)
     {
-        //
+       $citas = Cita::all();
+        return view('citas/index', ['citas' => $citas]);
+
+      //
     }
 
     /**
@@ -116,7 +129,8 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
-            'consulta_id' =>'required|exists:consultas,id'
+            'consulta_id' =>'required|exists:consultas,id',
+            'fecha_fin' => 'date|after:now'
 
         ]);
 

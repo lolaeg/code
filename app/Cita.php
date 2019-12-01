@@ -24,4 +24,18 @@ class Cita extends Model
         return $this->belongsTo('App\Consulta');
     }
 
+    public function getFechaFinAtributte()
+    {
+        $duracion=15;
+        $segundos_fecha_inicio=strtotime($this->fecha_hora);
+        $segundos_duracion=$duracion*60;
+        $segundos_totales = $segundos_fecha_inicio + $segundos_duracion;
+        $fecha_fin = date('H:i', $segundos_totales);
+
+        return $fecha_fin;
+    }
+
+
+
+
 }
