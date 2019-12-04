@@ -1,3 +1,5 @@
+<!-- Hoja de estilos CSS -->
+<link rel="stylesheet" type="text/css" href="app/public/css/pacienteIndex.css">
 
 @extends('layouts.app')
 
@@ -8,19 +10,23 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Pacientes</div>
                     <div class="panel-body">
-                        {!! Form::open(['route' => 'pacientes.index', 'method'=>'get']) !!}
-                        <div class="form-group">
-                            {!!Form::label('especialidad_id', 'Buscar por especialidad:') !!}
-                            <br>
-                            {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
-                            {!! Form::submit('Buscar',['class'=>'btn-primary btn']) !!}
-                        </div>
                         {!! Form::close() !!}
                         @include('flash::message')
                         {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
-                        <br>
+                        {!! Form::open(['route' => 'pacientes.index', 'method'=>'get']) !!}
+                            <div class="form-group">
+                                {!!Form::label('especialidad_id', 'Buscar por especialidad:') !!}
+                                <br>
+                                {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
+                                {!! Form::submit('Buscar',['class'=>'btn-primary btn']) !!}
+                            </div>
+                        {!! Form::close() !!}
+                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
+                        {!! Form::submit('Mostrar todos', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::close() !!}
+                            <div className="links">{{$pacientes->links()}}</div>
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>

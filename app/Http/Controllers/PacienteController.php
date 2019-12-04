@@ -21,8 +21,12 @@ class PacienteController extends Controller
         $especialidades= Especialidad::all()->pluck('name','id');
         //Filtro
         $especialidad_id=$request->get('especialidad_id');
-        $pacientes = Paciente::where('especialidad_id','like',"%$especialidad_id%")->paginate(10);
-        return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades]);
+        $query_base = Paciente::orderBy('id', 'desc');
+        if(isset($especialidad_id) && $especialidad_id!=""){
+            $query_base->where('especialidad_id',$especialidad_id);
+        }
+        $pacientes = $query_base->paginate(6);
+        return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades])->withUsers($pacientes);
     }
 
     public function create()
