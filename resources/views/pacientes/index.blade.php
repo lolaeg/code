@@ -24,7 +24,7 @@
                             </div>
                         {!! Form::close() !!}
                         {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
-                        {!! Form::submit('Mostrar todos', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::submit('Mostrar todos los pacientes', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
                             <div className="links">{{$pacientes->links()}}</div>
                         <table class="table table-striped table-bordered">

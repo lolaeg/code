@@ -5,37 +5,37 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Enfermedades</div>
+                    <div class="panel-heading">Medicamentos</div>
+
                     <div class="panel-body">
                         @include('flash::message')
-                        {!! Form::open(['route' => 'enfermedades.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear enfermedad', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::open(['route' => 'medicamentos.create', 'method' => 'get', 'class'=>'inline-important']) !!}
+                        {!!   Form::submit('Crear medicamento', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
-
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>Nombre</th>
-                                <th>Nombre común (opcional)</th>
-                                <th>Especialidad</th>
+                                <th>Nombre comercial</th>
+                                <th>Composición</th>
+                                <th>Presentación</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
-
-                            @foreach ($enfermedades as $enfermedad)
+                            @foreach ($medicamentos as $medicamento)
                                 <tr>
-                                    <td>{{ $enfermedad->name }}</td>
-                                    <td>{{ $enfermedad->alias }}</td>
-                                    <td>{{ $enfermedad->especialidad->name }}</td>
-
+                                    <td>{{ $medicamento->name }}</td>
+                                    <td>{{ $medicamento->composition }}</td>
+                                    <td>{{ $medicamento->presentation }}</td>
                                     <td>
-                                        {!! Form::open(['route' => ['enfermedades.edit',$enfermedad->id], 'method' => 'get']) !!}
+                                        {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
+
                                     </td>
                                     <td>
-                                        {!! Form::open(['route' => ['enfermedades.destroy',$enfermedad->id], 'method' => 'delete']) !!}
+                                        {!! Form::open(['route' => ['medicamentos.destroy',$medicamento->id], 'method' => 'delete']) !!}
                                         {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                         {!! Form::close() !!}
+
                                     </td>
                                 </tr>
                             @endforeach

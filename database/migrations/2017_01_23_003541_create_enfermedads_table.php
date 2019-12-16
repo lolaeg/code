@@ -16,7 +16,6 @@ class CreateEnfermedadsTable extends Migration
             $table->string('alias');
             $table->unsignedInteger('especialidad_id');
             $table->timestamps();
-
             $table->foreign('especialidad_id')->references('id')->on('especialidads');
         });
     }

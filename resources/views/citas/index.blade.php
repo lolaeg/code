@@ -12,13 +12,10 @@
                         {!! Form::open(['route' => 'citas.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
-
+                        <br>
                         {!! Form::open(['route' => ['citas.show','id'], 'method' => 'get']) !!}
-                        {!!   Form::submit('Mostrar todas las citas', ['class'=> 'btn btn-warning'])!!}
+                        {!!   Form::submit('Mostrar todas las citas', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
-
-
-
 
                         <br><br>
                         <table class="table table-striped table-bordered">
@@ -28,21 +25,16 @@
                                 <th>Paciente</th>
                                 <th>Consulta</th>
                                 <th>Finalizacion</th>
-
                                 <th colspan="2">Acciones</th>
                             </tr>
 
                             @foreach ($citas as $cita)
-
-
                                 <tr>
                                     <td>{{ $cita->fecha_hora }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>{{ $cita->consulta->name}}</td>
                                     <td>{{ $cita->getFechaFinAtributte() }}</td>
-
-
                                     <td>
                                         {!! Form::open(['route' => ['citas.edit',$cita->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
@@ -54,8 +46,6 @@
                                         {!! Form::close() !!}
 
                                     </td>
-
-
                                 </tr>
                             @endforeach
                         </table>

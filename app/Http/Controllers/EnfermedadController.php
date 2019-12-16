@@ -17,7 +17,6 @@ class EnfermedadController extends Controller
     public function index()
     {
         $enfermedades = Enfermedad::all();
-
         return view('enfermedades/index',['enfermedades'=>$enfermedades]);
     }
 
@@ -71,10 +70,6 @@ class EnfermedadController extends Controller
         flash('Enfermedad modificada correctamente');
 
         return redirect()->route('enfermedades.index');
-    }
-    public function retrieve($id)
-    {
-
     }
 
     public function destroy($id)

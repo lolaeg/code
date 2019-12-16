@@ -16,7 +16,7 @@
                             {!! Form::label('name', 'Nombre de la consulta') !!}
                             {!! Form::text('name',$consulta->name,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
-                        {!! Form::submit('Actualizar',['class'=>'btn-primary btn']) !!}
+                        {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>

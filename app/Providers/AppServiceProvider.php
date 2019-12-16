@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Validator::extend('nuhsa', function($field,$value,$parameters){
-
             if (strlen($value)!=12  || substr($value,0,2)!="AN" || !is_numeric(substr($value,2))){
                 return false;
             }
@@ -50,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
               return "NUHSA incorrecto. AN y 10 dígitos. Ej: AN1234567890";
 
         });
-
+        //Validator::extend('')
     }
 
     /**

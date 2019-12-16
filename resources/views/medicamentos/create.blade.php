@@ -5,25 +5,24 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear médico</div>
+                    <div class="panel-heading">Crear medicamento</div>
 
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::open(['route' => 'medicos.store']) !!}
+                        {!! Form::open(['route' => 'medicamentos.store']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('name', 'Nombre del médico') !!}
+                            {!! Form::label('name', 'Nombre comercial del medicamento') !!}
                             {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('surname', 'Apellidos del médico') !!}
-                            {!! Form::text('surname',null,['class'=>'form-control', 'required']) !!}
+                            {!! Form::label('composition', 'Composición') !!}
+                            {!! Form::text('composition',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('especialidad_id', 'Especialidad') !!}
-                            <br>
-                            {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::label('presentation', 'Presentación') !!}
+                            {!! Form::text('presentation',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}

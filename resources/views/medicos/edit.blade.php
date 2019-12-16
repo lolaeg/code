@@ -13,11 +13,11 @@
                         {!! Form::model($medico, [ 'route' => ['medicos.update',$medico->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('name', 'Nombre del medico') !!}
+                            {!! Form::label('name', 'Nombre del médico') !!}
                             {!! Form::text('name',$medico->name,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('surname', 'Apellidos del medico') !!}
+                            {!! Form::label('surname', 'Apellidos del médico') !!}
                             {!! Form::text('surname',$medico->surname,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">

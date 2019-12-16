@@ -51,8 +51,8 @@ class ConsultaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-        ]);
+        'name' => 'required|max:255',
+    ]);
 
         //
         $consultas = new Consulta($request->all());

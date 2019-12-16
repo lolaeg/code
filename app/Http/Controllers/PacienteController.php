@@ -77,9 +77,9 @@ class PacienteController extends Controller
     public function update(Request $request, $id)
     {
         //Esta parte es para añadir especialidad_id a partir de enfermedad
-        $enfermedad_id=$request->get('enfermedad_id');
-        $enfermedad=Enfermedad::find($enfermedad_id);
-        $especialidad_id=$enfermedad->especialidad_id;
+        $enfermedad_id = $request->get('enfermedad_id');
+        $enfermedad = Enfermedad::find($enfermedad_id);
+        $especialidad_id = $enfermedad->especialidad_id;
         $request->merge(["especialidad_id"=>$especialidad_id]);
         //
         $this->validate($request, [
@@ -98,8 +98,6 @@ class PacienteController extends Controller
         flash('Paciente modificado correctamente');
 
         return redirect()->route('pacientes.index');
-
-
     }
 
     public function destroy($id)

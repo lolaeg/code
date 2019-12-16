@@ -12,6 +12,7 @@ class Paciente extends Model
     {
         return $this->belongsTo('App\Enfermedad');
     }
+
     public function especialidad()
     {
         return $this->belongsTo('App\Especialidad');
