@@ -17,4 +17,12 @@ class Medicamento extends Model
     {
         return $this->name .' '. $this->composition .' '. $this->presentation;
     }
+    public function tratamiento()
+    {
+        return $this->belongsTo('App\Tratamiento');
+    }
+    public function medicacion()
+    {
+        return $this->hasMany('App\Medicacion');
+    }
 }

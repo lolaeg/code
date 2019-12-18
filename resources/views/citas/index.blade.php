@@ -20,6 +20,7 @@
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>
+                                <th>Nombre</th>
                                 <th>Fecha</th>
                                 <th>Medico</th>
                                 <th>Paciente</th>
@@ -30,6 +31,7 @@
 
                             @foreach ($citas as $cita)
                                 <tr>
+                                    <td>{{ $cita->name }}</td>
                                     <td>{{ $cita->fecha_hora }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
@@ -53,4 +55,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

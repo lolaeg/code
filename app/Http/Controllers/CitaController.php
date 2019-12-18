@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
+use App\Tratamiento;
 
 
 class CitaController extends Controller
@@ -64,6 +65,7 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'name' => 'required|max:255',
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
@@ -106,14 +108,14 @@ class CitaController extends Controller
 
         $cita = Cita::find($id);
 
-        $medicos = Medico::all()->pluck('full_name','id');
+        $medico = Medico::all()->pluck('full_name','id');
 
-        $pacientes = Paciente::all()->pluck('full_name','id');
+        $paciente = Paciente::all()->pluck('full_name','id');
 
-        $consultas = Consulta::all()->pluck('name','id');
+        $consulta = Consulta::all()->pluck('name','id');
 
 
-        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'consultas'=>$consultas]);
+        return view('citas/edit',['cita'=> $cita, 'medico'=>$medico, 'paciente'=>$paciente, 'consulta'=>$consulta]);
     }
 
     /**
@@ -126,6 +128,7 @@ class CitaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'name' => 'required|max:255',
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',

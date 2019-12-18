@@ -12,11 +12,9 @@
 
                         {!! Form::open(['route' => 'tratamientos.store']) !!}
 
-                        <div class="form-group">
-                            {!! Form::label('enfermedad_id', 'Enfermedad a la que pertenece el tratamiento') !!}
-                            <br>
-                            {!! Form::select('enfermedad_id',$enfermedades,['class'=>'form-control','required']) !!}
-                        </div>
+
+
+
                         <div class="form-group">
                             {!! Form::label('description', 'Descripción') !!}
                             {!! Form::text('description',null,['class'=>'form-control', 'required', 'autofocus']) !!}
@@ -28,6 +26,11 @@
                         <div class="form-group">
                             {!! Form::label('date_finish', 'Fecha de finalización') !!}
                             <input type="datetime-local" id="date_finish" name="date_finish" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('cita_id', 'cita') !!}
+                            <br>
+                            {!! Form::select('cita_id', $citas, ['class' => 'form-control','required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}

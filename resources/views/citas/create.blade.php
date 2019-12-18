@@ -16,12 +16,14 @@
                         <div class="form-group">
                             {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
 
-
                             <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-
 
                         </div>
 
+                        <div class="form-group">
+                                {!! Form::label('name', 'Nombre de la cita') !!}
+                                {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
                         <div class="form-group">
                             {!!Form::label('medico_id', 'Medico') !!}
                             <br>

@@ -12,11 +12,8 @@
 
                         {!! Form::model($tratamiento, [ 'route' => ['tratamientos.update',$tratamiento->id], 'method'=>'PUT']) !!}
 
-                        <div class="form-group">
-                            {!! Form::label('enfermedad_id', 'Enfermedad a la que pertenece el tratamiento') !!}
-                            <br>
-                            {!! Form::select('enfermedad_id', $enfermedad, $tratamiento->enfermedad_id, ['class'=>'form-control','required'])  !!}
-                        </div>
+
+
                         <div class="form-group">
                             {!! Form::label('description', 'Descripción') !!}
                             {!! Form::text('description',$tratamiento->description,['class'=>'form-control', 'required', 'autofocus']) !!}
@@ -28,6 +25,11 @@
                         <div class="form-group">
                             {!! Form::label('date_finish', 'Fecha de finalización') !!}
                             {!! Form::text('date_finish',$tratamiento->date_finish,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('cita_id', 'cita') !!}
+                            <br>
+                            {!! Form::select('cita_id',$cita, $tratamiento->cita_id, ['class'=>'form-control','required'])  !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
                         {!! Form::close() !!}

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cita extends Model
 {
     //HE AÑADIDO CONSULTA_ID PORQ  ES UN ATRIBUTO NUEVO QUE NECESITA
-    protected $fillable = ['fecha_hora', 'medico_id', 'paciente_id','consulta_id'];
+    protected $fillable = ['name','fecha_hora', 'medico_id', 'paciente_id','consulta_id'];
 
     public function medico()
     {
@@ -22,6 +22,10 @@ class Cita extends Model
     public function consulta()
     {
         return $this->belongsTo('App\Consulta');
+    }
+    public function tratamiento()
+    {
+        return $this->belongsTo('App\Tratamiento');
     }
 
     public function getFechaFinAtributte()

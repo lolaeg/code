@@ -21,6 +21,12 @@ class Medico extends Model
         return $this->hasMany('App\Cita');
     }
 
+    public function tratamiento()
+    {
+        return $this->hasMany('App\Tratamiento');
+    }
+
+
     /**
      * @return string
      */

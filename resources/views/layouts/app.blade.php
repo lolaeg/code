@@ -88,6 +88,11 @@
                                             Tratamientos
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/medicacions') }}">
+                                            Medicación
+                                        </a>
+                                    </li>
 
                                     <li>
                                         <a href="{{ url('/pacientes') }}">

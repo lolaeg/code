@@ -24,17 +24,21 @@
                         <div class="form-group">
                            {!!Form::label('medico_id', 'Medico') !!}
                             <br>
-                            {!! Form::select('medico_id', $medicos, $cita->medico_id, ['class' => 'form-control']) !!}
+                            {!! Form::select('medico_id', $medico, $cita->medico_id, ['class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!! Form::label('name', 'Nombre de la cita') !!}
+                            {!! Form::text('name',$cita->name,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
                             {!!Form::label('paciente_id', 'Paciente') !!}
                             <br>
-                            {!! Form::select('paciente_id', $pacientes, $cita->paciente_id, ['class' => 'form-control']) !!}
+                            {!! Form::select('paciente_id', $paciente, $cita->paciente_id, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
                             {!!Form::label('consulta_id', 'Consulta') !!}
                             <br>
-                            {!! Form::select('consulta_id', $consultas, $cita->consulta_id, ['class' => 'form-control']) !!}
+                            {!! Form::select('consulta_id', $consulta, $cita->consulta_id, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

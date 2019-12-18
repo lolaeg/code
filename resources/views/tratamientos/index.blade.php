@@ -16,18 +16,21 @@
 
                         <table class="table table-striped table-bordered">
                             <tr>
-                                <th>Enfermedad</th>
+
                                 <th>Descripción</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de finalización</th>
+                                <th>Cita</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
+
                             @foreach ($tratamientos as $tratamiento)
                                 <tr>
-                                    <td>{{ $tratamiento->enfermedad->name }}</td>
                                     <td>{{ $tratamiento->description }}</td>
                                     <td>{{ $tratamiento->date_start }}</td>
                                     <td>{{ $tratamiento->date_finish }}</td>
+                                    <td>{{ $tratamiento->cita->name}}</td>
+
                                     <td>
                                         {!! Form::open(['route' => ['tratamientos.edit',$tratamiento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
@@ -47,4 +50,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
