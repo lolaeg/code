@@ -19,6 +19,7 @@ class CreatePacientesTable extends Migration
             $table->timestamps();
 
             $table->foreign('enfermedad_id')->references('id')->on('enfermedads'); //CAMBIADO
+            $table->foreign('especialidad_id')->references('id')->on('especialidads');
         });
     }
 

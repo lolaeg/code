@@ -66,8 +66,8 @@ class CitaController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'medico_id' => 'required|exists:medicos,id',
-            'paciente_id' => 'required|exists:pacientes,id',
+            'medico_id' => 'required|especialidad|exists:medicos,id',
+            'paciente_id' => 'required|especialidad|exists:pacientes,id',
             'fecha_hora' => 'required|date|after:now',
             'consulta_id' =>'required|exists:consultas,id',
             'fecha_fin' => 'date|after:now'

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Paciente;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,7 +50,22 @@ class AppServiceProvider extends ServiceProvider
               return "NUHSA incorrecto. AN y 10 dígitos. Ej: AN1234567890";
 
         });
-        //Validator::extend('')
+        Validator::extend('especialidad', function ($field,$value1,$value2,$parameters){
+            $id_med = $value1->get('id');
+            $id_pac = $value2->get('id');
+            $medico = Medico::find($id_med);
+            $paciente = Paciente::find($id_pac);
+            if ($medico->get('especialidad_id') == $paciente->get('especialidad_id')){
+                return false;
+            }else{
+                return true;
+            }
+        });
+
+        Validator::replacer('especialidad', function ($message, $attribute, $rule, $parameters) {
+            return "La especialidad del medico seleccionado es distinta a la de la enfermedad del paciente";
+
+        });
     }
 
     /**
