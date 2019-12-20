@@ -71,7 +71,7 @@ class TratamientoController extends Controller
     {
 
         $tratamiento = Tratamiento::find($id);
-        $cita = Cita::all()->pluck('name','id');
+        $cita= Cita::all()->pluck('name', 'key');
         return view('tratamientos/edit',['tratamiento'=> $tratamiento,'cita'=>$cita]);
 
        // return view('tratamientos/edit',['tratamiento'=> $tratamientos,'enfermedad'=>$enfermedades, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'medicamentos'=>$medicamentos]);
