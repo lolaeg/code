@@ -25,7 +25,7 @@ class PacienteController extends Controller
         if(isset($especialidad_id) && $especialidad_id!=""){
             $query_base->where('especialidad_id',$especialidad_id);
         }
-        $pacientes = $query_base->paginate(6);
+        $pacientes = $query_base->paginate(15);
         return view('pacientes/index',compact('pacientes'),['especialidades'=>$especialidades])->withUsers($pacientes);
     }
 

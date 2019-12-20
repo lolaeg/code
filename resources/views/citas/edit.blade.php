@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@section('css')
+    <style>
+        .fecha-duracion{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
@@ -11,16 +18,20 @@
                         @include('flash::message')
 
                         {!! Form::model($cita, [ 'route' => ['citas.update',$cita->id], 'method'=>'PUT']) !!}
-
                         <div class="form-group">
-                            {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
-
-
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-
-
+                            {!! Form::label('name', 'Nombre de la cita') !!}
+                            {!! Form::text('name',$cita->name,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
-
+                        <div class="fecha-duracion">
+                            <div class="form-group">
+                                {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
+                                <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            </div>
+                            <div class="duracion">
+                                {!! Form::label('duracion', 'Duración') !!}
+                                {!! Form::text('duracion',15,['class'=>'form-control', 'required']) !!}
+                            </div>
+                        </div>
                         <div class="form-group">
                            {!!Form::label('medico_id', 'Medico') !!}
                             <br>

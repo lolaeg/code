@@ -1,28 +1,34 @@
 @extends('layouts.app')
-
+@section('css')
+    <style>
+        .fecha-duracion{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear cita <br> La cita durará 15 minutos <br/> </div>
-
-
-
+                    <div class="panel-heading">Crear cita <br> La cita durará 15 minutos por defecto <br/> </div>
                     <div class="panel-body">
                         @include('flash::message')
-
                         {!! Form::open(['route' => 'citas.store']) !!}
                         <div class="form-group">
-                            {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
-
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-
+                            {!! Form::label('name', 'Nombre de la cita') !!}
+                            {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
-
-                        <div class="form-group">
-                                {!! Form::label('name', 'Nombre de la cita') !!}
-                                {!! Form::text('name',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        <div class="fecha-duracion">
+                            <div class="form-group">
+                                {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
+                                <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            </div>
+                            <div class="duracion">
+                                {!! Form::label('duracion', 'Duración') !!}
+                                {!! Form::text('duracion',15,['class'=>'form-control', 'required']) !!}
+                            </div>
                         </div>
                         <div class="form-group">
                             {!!Form::label('medico_id', 'Medico') !!}

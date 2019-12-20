@@ -1,8 +1,42 @@
-<!-- Hoja de estilos CSS -->
-<link rel="stylesheet" type="text/css" href="app/public/css/pacienteIndex.css">
-
 @extends('layouts.app')
+@section('css')
+    <style>
+        .crear-buscar{
+            display: flex;
+            justify-content: space-between;
+        }
+        .crear{
+            margin-right: 2vmin;
+        }
+        .mostrar-buscador{
+            display: flex;
+            justify-content: space-between;
+        }
+        .mostrar{
+            display: flex;
+            margin-right: 2vmin;
+        }
+        .buscador{
+            display: flex;
+            justify-items: end ;
 
+        }
+        .boton-buscar{
+            display: flex;
+            justify-self: end;
+        }
+        .busca-especialidad{
+            display: flex;
+            margin-bottom: 1vmin;
+            margin-right: 1vmin;
+            font-size: 2.5vmin;
+        }
+        .paginas{
+            display: flex;
+            font-size: 2vmin;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container">
         <div class="row">
@@ -12,21 +46,35 @@
                     <div class="panel-body">
                         {!! Form::close() !!}
                         @include('flash::message')
-                        {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
-                        {!! Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
-                        {!! Form::close() !!}
-                        {!! Form::open(['route' => 'pacientes.index', 'method'=>'get']) !!}
-                            <div class="form-group">
-                                {!!Form::label('especialidad_id', 'Buscar por especialidad:') !!}
-                                <br>
-                                {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
-                                {!! Form::submit('Buscar',['class'=>'btn-primary btn']) !!}
+                        <div class="crear-buscar">
+                            <div class="crear">
+                                {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
+                                {!! Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
+                                {!! Form::close() !!}
                             </div>
-                        {!! Form::close() !!}
-                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
-                        {!! Form::submit('Mostrar todos los pacientes', ['class'=> 'btn btn-primary'])!!}
-                        {!! Form::close() !!}
+                            <div class="mostrar-buscador">
+                                    {!! Form::open(['route' => 'pacientes.index', 'method' => 'get']) !!}
+                                <div class="mostrar">
+                                    {!! Form::submit('Mostrar todos', ['class'=> 'btn btn-primary'])!!}
+                                </div>
+                                    {!! Form::close() !!}
+                                <div class="buscador">
+                                    {!! Form::open(['route' => 'pacientes.index', 'method'=>'get']) !!}
+                                    {!!Form::label('especialidad_id', 'Buscar por especialidad:') !!}
+                                    <br>
+                                    <div class="busca-especialidad">
+                                        {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
+                                    </div>
+                                    <div class="boton-buscar">
+                                        {!! Form::submit('Buscar',['class'=>'btn-primary btn']) !!}
+                                    </div>
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paginas">
                             <div className="links">{{$pacientes->links()}}</div>
+                        </div>
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Nombre</th>
@@ -57,6 +105,9 @@
                                 </tr>
                             @endforeach
                         </table>
+                        <div class="paginas">
+                            <div className="links">{{$pacientes->links()}}</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ class CreateCitasTable extends Migration
             $table->increments('id');
             $table->dateTime('fecha_hora');
             $table->string('name');
+            $table->unsignedInteger('duracion');
             $table->unsignedInteger('medico_id');
             $table->unsignedInteger('paciente_id');
             $table->unsignedInteger('consulta_id');
